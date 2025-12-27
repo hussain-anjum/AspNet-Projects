@@ -1,0 +1,92 @@
+﻿@page
+@model StudentProfileValidation.Pages.IndexModel
+@{
+    ViewData["Title"] = "Student Info Form";
+}
+
+<h2 style="text-align: center;">Student's Profile</h2>
+
+<form method="post" id="studentForm">
+    <table style="margin: 0 auto;">
+        <tr>
+            <td><label asp-for="Student.Name">Name:</label></td>
+            <td>
+                <input type="text" asp-for="Student.Name" id="sName" />
+                <span asp-validation-for="Student.Name" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label asp-for="Student.FatherName">Father's Name:</label></td>
+            <td>
+                <input type="text" asp-for="Student.FatherName" id="fatherName" />
+                <span asp-validation-for="Student.FatherName" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label asp-for="Student.MotherName">Mother's Name:</label></td>
+            <td>
+                <input type="text" asp-for="Student.MotherName" id="motherName" />
+                <span asp-validation-for="Student.MotherName" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label asp-for="Student.DateOfBirth">DOB:</label></td>
+            <td>
+                <input type="date" asp-for="Student.DateOfBirth" id="dob" />
+                <span asp-validation-for="Student.DateOfBirth" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label asp-for="Student.Sex">Sex:</label></td>
+            <td>
+                <select asp-for="Student.Sex" id="sex">
+                    <option value="">Select</option>
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                    <option value="O">Other</option>
+                </select>
+                <span asp-validation-for="Student.Sex" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label asp-for="Student.Phone">Phone:</label></td>
+            <td>
+                <input type="tel" asp-for="Student.Phone" id="phone" placeholder="01XXXXXXXXX" />
+                <span asp-validation-for="Student.Phone" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label asp-for="Student.Email">Email:</label></td>
+            <td>
+                <input type="text" asp-for="Student.Email" id="email" />
+                <span asp-validation-for="Student.Email" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label asp-for="Student.PresentAddress">Present Address:</label></td>
+            <td>
+                <textarea asp-for="Student.PresentAddress" id="pAddress" rows="2" cols="20"></textarea>
+                <span asp-validation-for="Student.PresentAddress" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label asp-for="Student.PermanentAddress">Permanent Address:</label></td>
+            <td>
+                <textarea asp-for="Student.PermanentAddress" id="permAddress" rows="2" cols="20"></textarea>
+                <span asp-validation-for="Student.PermanentAddress" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align: center;">
+                <br />
+                <input type="submit" value="Submit" />
+                <input type="reset" value="Reset" />
+            </td>
+        </tr>
+    </table>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/js/validation.js"></script>
+}
