@@ -1,0 +1,71 @@
+﻿@page
+@model ProductProfileForm.Pages.IndexModel
+@{
+    ViewData["Title"] = "Product Profile Form";
+}
+
+<h1 align="center"><u>Product Profile Form</u></h1>
+
+<section>
+    <form method="post" enctype="multipart/form-data">
+        <fieldset style="text-align: center; background-color: rgb(255, 255, 255)">
+            <legend style="font-size: large">
+                <b><i>Product Information</i></b>
+            </legend>
+            <br />
+
+            <label asp-for="Product.Product_Name">Product Name</label><br />
+            <input asp-for="Product.Product_Name" required /><br />
+            <span asp-validation-for="Product.Product_Name" class="text-danger"></span><br /><br />
+
+            <label asp-for="Product.Product_Image">Product Image</label><br />
+            <input asp-for="Product.Product_Image" /><br /><br />
+
+            <label asp-for="Product.Category">Category</label><br />
+            <select asp-for="Product.Category" required>
+                <option value="">Select Category</option>
+                <option value="Electronics">Electronics</option>
+                <option value="Apparel">Apparel</option>
+                <option value="Home">Home</option>
+                <option value="Books">Books</option>
+                <option value="Other">Other</option>
+            </select><br />
+            <span asp-validation-for="Product.Category" class="text-danger"></span><br /><br />
+
+            <label asp-for="Product.Price">Price</label><br />
+            <input asp-for="Product.Price" type="number" step="0.01" min="0" required /><br />
+            <span asp-validation-for="Product.Price" class="text-danger"></span><br /><br />
+
+            <label asp-for="Product.Description">Description</label><br />
+            <textarea asp-for="Product.Description" rows="3" cols="30"></textarea><br /><br />
+
+            <label asp-for="Product.Quantity">Quantity</label><br />
+            <input asp-for="Product.Quantity" type="number" min="0" required /><br />
+            <span asp-validation-for="Product.Quantity" class="text-danger"></span><br /><br />
+
+            <label asp-for="Product.Manufacturer">Manufacturer</label><br />
+            <input asp-for="Product.Manufacturer" required /><br />
+            <span asp-validation-for="Product.Manufacturer" class="text-danger"></span><br /><br />
+
+            <label asp-for="Product.Release_Date">Release Date</label><br />
+            <input asp-for="Product.Release_Date" type="date" /><br /><br />
+        </fieldset>
+        <br />
+
+        <section style="text-align: center">
+            <button type="submit"><b>Submit</b></button>
+        </section>
+    </form>
+
+    @if (Model.SuccessMessage != null)
+    {
+        <div style="text-align: center; color: green; margin-top: 20px;">
+            <p>@Model.SuccessMessage</p>
+            <a href="/Products/ShowData">See the Product List</a>
+        </div>
+    }
+</section>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

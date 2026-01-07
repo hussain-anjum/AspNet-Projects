@@ -1,0 +1,64 @@
+@page
+@model ProductProfileForm.Pages.Products.ShowDataModel
+@{
+    ViewData["Title"] = "Product List";
+}
+
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    th, td {
+        padding: 8px;
+        text-align: left;
+    }
+</style>
+
+<h2 align="center"><u>Product List</u></h2>
+
+@if (Model.Products != null && Model.Products.Any())
+{
+    <table style="width: 100%;">
+        <tr>
+            <th>Product Name</th>
+            <th>Product ID</th>
+            <th>Product Image</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Quantity</th>
+            <th>Manufacturer</th>
+            <th>Release Date</th>
+            <th>Action</th>
+        </tr>
+        @foreach (var product in Model.Products)
+        {
+            <tr>
+                <td>@product.Product_Name</td>
+                <td>@product.Product_id</td>
+                <td>@product.Product_Image</td>
+                <td>@product.Category</td>
+                <td>@product.Price.ToString("C")</td>
+                <td>@product.Description</td>
+                <td>@product.Quantity</td>
+                <td>@product.Manufacturer</td>
+                <td>@(product.Release_Date?.ToString("yyyy-MM-dd"))</td>
+                <td>
+                    <a href="/Products/EditData?id=@product.Product_id">Edit</a> |
+                    <a href="/Products/DeleteData?id=@product.Product_id" 
+                       onclick="return confirm('Are you sure you want to delete this product?');">Delete</a>
+                </td>
+            </tr>
+        }
+    </table>
+    <br />
+    <div style="text-align: center;">
+        <a href="/">Add New Product</a>
+    </div>
+}
+else
+{
+    <p>0 results</p>
+    <a href="/">Add New Product</a>
+}

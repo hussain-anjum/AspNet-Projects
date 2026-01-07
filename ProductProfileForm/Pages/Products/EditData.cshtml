@@ -1,0 +1,52 @@
+@page
+@model ProductProfileForm.Pages.Products.EditDataModel
+@{
+    ViewData["Title"] = "Edit Product";
+}
+
+<h2 align="center"><u>Edit Product Info</u></h2>
+
+@if (Model.Product != null)
+{
+    <form method="post" enctype="multipart/form-data">
+        <input type="hidden" asp-for="Product.Product_id" />
+
+        <label asp-for="Product.Product_Name">Product Name:</label><br />
+        <input asp-for="Product.Product_Name" /><br /><br />
+
+        <label asp-for="Product.Product_Image">Product Image:</label><br />
+        <input asp-for="Product.Product_Image" /><br /><br />
+
+        <label asp-for="Product.Category">Category:</label><br />
+        <select asp-for="Product.Category">
+            <option value="Electronics">Electronics</option>
+            <option value="Apparel">Apparel</option>
+            <option value="Home">Home</option>
+            <option value="Books">Books</option>
+            <option value="Other">Other</option>
+        </select><br /><br />
+
+        <label asp-for="Product.Price">Price:</label><br />
+        <input asp-for="Product.Price" type="number" step="0.01" min="0" /><br /><br />
+
+        <label asp-for="Product.Description">Description:</label><br />
+        <textarea asp-for="Product.Description" rows="3" cols="30"></textarea><br /><br />
+
+        <label asp-for="Product.Quantity">Quantity:</label><br />
+        <input asp-for="Product.Quantity" type="number" min="0" /><br /><br />
+
+        <label asp-for="Product.Manufacturer">Manufacturer:</label><br />
+        <input asp-for="Product.Manufacturer" /><br /><br />
+
+        <label asp-for="Product.Release_Date">Release Date:</label><br />
+        <input asp-for="Product.Release_Date" type="date" /><br /><br />
+
+        <button type="submit">Update</button>
+        <a href="/Products/ShowData">Cancel</a>
+    </form>
+}
+else
+{
+    <p>Product not found.</p>
+    <a href="/Products/ShowData">Back to Product List</a>
+}
