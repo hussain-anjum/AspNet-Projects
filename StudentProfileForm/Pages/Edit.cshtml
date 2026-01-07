@@ -1,0 +1,90 @@
+@page "{id:int}"
+@model StudentProfileForm.Pages.EditModel
+@{
+    ViewData["Title"] = "Edit Student";
+}
+
+<h2 style="text-align: center;"><u>Edit Student Data</u></h2>
+
+<form method="post" style="text-align: center;">
+    <input type="hidden" asp-for="Student.Id" />
+
+    <label asp-for="Student.Name">Full Name:</label><br />
+    <input asp-for="Student.Name" /><br />
+    <span asp-validation-for="Student.Name" class="text-danger"></span><br /><br />
+
+    <label asp-for="Student.FatherName">Father's Name:</label><br />
+    <input asp-for="Student.FatherName" /><br />
+    <span asp-validation-for="Student.FatherName" class="text-danger"></span><br /><br />
+
+    <label asp-for="Student.MotherName">Mother's Name:</label><br />
+    <input asp-for="Student.MotherName" /><br />
+    <span asp-validation-for="Student.MotherName" class="text-danger"></span><br /><br />
+
+    <label asp-for="Student.DateOfBirth">Date of Birth:</label><br />
+    <input asp-for="Student.DateOfBirth" type="date" /><br />
+    <span asp-validation-for="Student.DateOfBirth" class="text-danger"></span><br /><br />
+
+    <label asp-for="Student.Gender">Gender:</label><br />
+    <select asp-for="Student.Gender">
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+    </select><br />
+    <span asp-validation-for="Student.Gender" class="text-danger"></span><br /><br />
+
+    <label asp-for="Student.PresentAddress">Present Address:</label><br />
+    <textarea asp-for="Student.PresentAddress" rows="2" cols="40"></textarea><br />
+    <span asp-validation-for="Student.PresentAddress" class="text-danger"></span><br /><br />
+
+    <label asp-for="Student.Mobile">Mobile:</label><br />
+    <input asp-for="Student.Mobile" /><br />
+    <span asp-validation-for="Student.Mobile" class="text-danger"></span><br /><br />
+
+    <label asp-for="Student.Email">Email:</label><br />
+    <input asp-for="Student.Email" type="email" /><br />
+    <span asp-validation-for="Student.Email" class="text-danger"></span><br /><br />
+
+    <label asp-for="Student.Image">Image:</label><br />
+    <input asp-for="Student.Image" /><br /><br />
+
+    <label asp-for="Student.Faculty">Faculty:</label><br />
+    <select asp-for="Student.Faculty">
+        <option value="Science&Engg.">Faculty Of Science and Engineering</option>
+        <option value="Arts">Faculty Of Arts</option>
+        <option value="BBA">Faculty Of BBA</option>
+        <option value="SocialScience">Faculty Of Social Science</option>
+    </select><br />
+    <span asp-validation-for="Student.Faculty" class="text-danger"></span><br /><br />
+
+    <label asp-for="Student.Department">Department:</label><br />
+    <select asp-for="Student.Department">
+        <option value="CSE">Department Of CSE</option>
+        <option value="EEE">Department Of EEE</option>
+        <option value="ESE">Department of ESE</option>
+    </select><br />
+    <span asp-validation-for="Student.Department" class="text-danger"></span><br /><br />
+
+    <label asp-for="Student.HallName">Hall:</label><br />
+    <input asp-for="Student.HallName" /><br />
+    <span asp-validation-for="Student.HallName" class="text-danger"></span><br /><br />
+
+    <label asp-for="Student.Roll">Roll:</label><br />
+    <input asp-for="Student.Roll" readonly style="background-color: #f0f0f0;" /><br />
+    <span asp-validation-for="Student.Roll" class="text-danger"></span><br /><br />
+
+    <label asp-for="Student.RegNo">Reg. No:</label><br />
+    <input asp-for="Student.RegNo" /><br />
+    <span asp-validation-for="Student.RegNo" class="text-danger"></span><br /><br />
+
+    <label asp-for="Student.Session">Session:</label><br />
+    <input asp-for="Student.Session" /><br />
+    <span asp-validation-for="Student.Session" class="text-danger"></span><br /><br />
+
+    <button type="submit">Update</button>
+    <a href="/Students">Cancel</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,116 @@
+﻿@page
+@model StudentProfileForm.Pages.IndexModel
+@{
+    ViewData["Title"] = "Student Profile Form";
+}
+
+<h1 style="text-align: center;"><u>Student Profile Form</u></h1>
+
+<form method="post">
+    <!-- Personal Information -->
+    <section style="text-align: center;">
+        <fieldset style="background-color: #fff; display: inline-block; padding: 20px;">
+            <legend style="font-size: larger;"><b><i>Personal Information:</i></b></legend>
+            <br />
+
+            <label asp-for="Student.Name">Full Name:</label><br />
+            <input asp-for="Student.Name" /><br />
+            <span asp-validation-for="Student.Name" class="text-danger"></span><br /><br />
+
+            <label asp-for="Student.FatherName">Father's Name:</label><br />
+            <input asp-for="Student.FatherName" /><br />
+            <span asp-validation-for="Student.FatherName" class="text-danger"></span><br /><br />
+
+            <label asp-for="Student.MotherName">Mother's Name:</label><br />
+            <input asp-for="Student.MotherName" /><br />
+            <span asp-validation-for="Student.MotherName" class="text-danger"></span><br /><br />
+
+            <label asp-for="Student.DateOfBirth">Date of Birth:</label><br />
+            <input asp-for="Student.DateOfBirth" type="date" /><br />
+            <span asp-validation-for="Student.DateOfBirth" class="text-danger"></span><br /><br />
+
+            <p>Select Gender:</p>
+            <input asp-for="Student.Gender" type="radio" value="Male" id="male" />
+            <label for="male">Male</label>
+            <input asp-for="Student.Gender" type="radio" value="Female" id="female" />
+            <label for="female">Female</label><br />
+            <span asp-validation-for="Student.Gender" class="text-danger"></span><br /><br />
+
+            <label asp-for="Student.PresentAddress">Present Address:</label><br />
+            <textarea asp-for="Student.PresentAddress" rows="3" cols="40"></textarea><br />
+            <span asp-validation-for="Student.PresentAddress" class="text-danger"></span><br /><br />
+
+            <label asp-for="Student.Mobile">Mobile:</label><br />
+            <input asp-for="Student.Mobile" placeholder="01XXXXXXXXX" /><br />
+            <span asp-validation-for="Student.Mobile" class="text-danger"></span><br /><br />
+
+            <label asp-for="Student.Email">Email:</label><br />
+            <input asp-for="Student.Email" type="email" /><br />
+            <span asp-validation-for="Student.Email" class="text-danger"></span><br /><br />
+
+            <label asp-for="Student.Image">Image:</label><br />
+            <input asp-for="Student.Image" type="file" /><br /><br />
+        </fieldset>
+    </section>
+
+    <!-- Academic Information -->
+    <section style="text-align: center;">
+        <br />
+        <fieldset style="background-color: #fff; display: inline-block; padding: 20px;">
+            <legend style="font-size: larger;"><b><i>Academic Information:</i></b></legend>
+            <br />
+
+            <label asp-for="Student.Faculty">Select Faculty:</label>
+            <select asp-for="Student.Faculty">
+                <option value="">Select Faculty</option>
+                <option value="Science&Engg.">Faculty Of Science and Engineering</option>
+                <option value="Arts">Faculty Of Arts</option>
+                <option value="BBA">Faculty Of BBA</option>
+                <option value="SocialScience">Faculty Of Social Science</option>
+            </select><br />
+            <span asp-validation-for="Student.Faculty" class="text-danger"></span><br /><br />
+
+            <label asp-for="Student.Department">Select Department:</label>
+            <select asp-for="Student.Department">
+                <option value="">Select Department</option>
+                <option value="CSE">Department Of CSE</option>
+                <option value="EEE">Department Of EEE</option>
+                <option value="ESE">Department of ESE</option>
+            </select><br />
+            <span asp-validation-for="Student.Department" class="text-danger"></span><br /><br />
+
+            <label asp-for="Student.HallName">Select Hall:</label>
+            <select asp-for="Student.HallName">
+                <option value="N/A">N/A</option>
+                <option value="Bidrohi">Bidrohi</option>
+                <option value="Agnibina">Agnibina</option>
+                <option value="Shiulimala">Shiulimala</option>
+                <option value="Dolonchapa">Dolonchapa</option>
+            </select><br />
+            <span asp-validation-for="Student.HallName" class="text-danger"></span><br /><br />
+
+            <label asp-for="Student.Roll">Roll:</label><br />
+            <input asp-for="Student.Roll" /><br />
+            <span asp-validation-for="Student.Roll" class="text-danger"></span><br /><br />
+
+            <label asp-for="Student.RegNo">Reg. No:</label><br />
+            <input asp-for="Student.RegNo" /><br />
+            <span asp-validation-for="Student.RegNo" class="text-danger"></span><br /><br />
+
+            <label asp-for="Student.Session">Session:</label><br />
+            <input asp-for="Student.Session" placeholder="2020-2021" /><br />
+            <span asp-validation-for="Student.Session" class="text-danger"></span><br /><br />
+        </fieldset>
+    </section>
+    <br />
+
+    <!-- Submit Button -->
+    <section style="text-align: center;">
+        <button type="submit"><b>Submit</b></button>
+        <a href="/Students" style="margin-left: 10px;">View All Students</a>
+    </section>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

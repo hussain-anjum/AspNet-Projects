@@ -1,0 +1,75 @@
+@page
+@model StudentProfileForm.Pages.StudentsModel
+@{
+    ViewData["Title"] = "Student's Data";
+}
+
+<h2 style="text-align: center;"><u>Student's Data</u></h2>
+
+@if (TempData["Message"] != null)
+{
+    <div style="background-color: #d4edda; color: #155724; padding: 10px; margin: 10px; border: 1px solid #c3e6cb; border-radius: 4px;">
+        @TempData["Message"]
+    </div>
+}
+
+@if (Model.Students.Any())
+{
+    <div style="overflow-x: auto;">
+        <table style="width: 100%; border: 1px solid black; border-collapse: collapse;">
+            <thead>
+                <tr style="background-color: #f2f2f2;">
+                    <th style="border: 1px solid black; padding: 8px;">Name</th>
+                    <th style="border: 1px solid black; padding: 8px;">Father's Name</th>
+                    <th style="border: 1px solid black; padding: 8px;">Mother's Name</th>
+                    <th style="border: 1px solid black; padding: 8px;">DOB</th>
+                    <th style="border: 1px solid black; padding: 8px;">Gender</th>
+                    <th style="border: 1px solid black; padding: 8px;">Address</th>
+                    <th style="border: 1px solid black; padding: 8px;">Mobile</th>
+                    <th style="border: 1px solid black; padding: 8px;">Email</th>
+                    <th style="border: 1px solid black; padding: 8px;">Faculty</th>
+                    <th style="border: 1px solid black; padding: 8px;">Dept.</th>
+                    <th style="border: 1px solid black; padding: 8px;">Hall</th>
+                    <th style="border: 1px solid black; padding: 8px;">Roll</th>
+                    <th style="border: 1px solid black; padding: 8px;">Reg. No</th>
+                    <th style="border: 1px solid black; padding: 8px;">Session</th>
+                    <th style="border: 1px solid black; padding: 8px;">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var student in Model.Students)
+                {
+                    <tr>
+                        <td style="border: 1px solid black; padding: 8px;">@student.Name</td>
+                        <td style="border: 1px solid black; padding: 8px;">@student.FatherName</td>
+                        <td style="border: 1px solid black; padding: 8px;">@student.MotherName</td>
+                        <td style="border: 1px solid black; padding: 8px;">@student.DateOfBirth.ToString("yyyy-MM-dd")</td>
+                        <td style="border: 1px solid black; padding: 8px;">@student.Gender</td>
+                        <td style="border: 1px solid black; padding: 8px;">@student.PresentAddress</td>
+                        <td style="border: 1px solid black; padding: 8px;">@student.Mobile</td>
+                        <td style="border: 1px solid black; padding: 8px;">@student.Email</td>
+                        <td style="border: 1px solid black; padding: 8px;">@student.Faculty</td>
+                        <td style="border: 1px solid black; padding: 8px;">@student.Department</td>
+                        <td style="border: 1px solid black; padding: 8px;">@student.HallName</td>
+                        <td style="border: 1px solid black; padding: 8px;">@student.Roll</td>
+                        <td style="border: 1px solid black; padding: 8px;">@student.RegNo</td>
+                        <td style="border: 1px solid black; padding: 8px;">@student.Session</td>
+                        <td style="border: 1px solid black; padding: 8px;">
+                            <a href="/Edit/@student.Id">Edit</a> |
+                            <a href="/Delete/@student.Id" onclick="return confirm('Are you sure you want to delete this student?')">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <p style="text-align: center;">No students found. <a href="/">Add a student</a></p>
+}
+
+<br />
+<div style="text-align: center;">
+    <a href="/">Add New Student</a>
+</div>
