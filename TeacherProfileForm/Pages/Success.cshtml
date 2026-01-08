@@ -1,0 +1,33 @@
+@page
+@model SuccessModel
+@{
+    ViewData["Title"] = "Teacher Profile Form";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .success-message {
+            color: green;
+            text-align: center;
+            margin: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1 align="center"><u>Teacher Profile Form</u></h1>
+
+    <div class="success-message">
+        New record created successfully<br />
+        <a href="/Teachers/ShowData">See the Teacher's Data</a>
+    </div>
+</body>
+</html>

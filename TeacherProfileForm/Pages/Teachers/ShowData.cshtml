@@ -1,0 +1,105 @@
+@page
+@model TeacherProfileForm.Pages.Teachers.ShowDataModel
+@{
+    ViewData["Title"] = "Teacher's Data";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        img {
+            max-width: 50px;
+            max-height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h2 align="center"><u>Teacher's Data</u></h2>
+
+    @if (Model.Teachers != null && Model.Teachers.Any())
+    {
+        <table style="width: 100%;">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Full Name</th>
+                    <th>NID</th>
+                    <th>Gender</th>
+                    <th>Present Address</th>
+                    <th>Mobile</th>
+                    <th>Email</th>
+                    <th>Image</th>
+                    <th>Faculty</th>
+                    <th>Dept.</th>
+                    <th>Designation</th>
+                    <th>Joining Date</th>
+                    <th>Qualification</th>
+                    <th>Experience</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var teacher in Model.Teachers)
+                {
+                    <tr>
+                        <td>@teacher.ID</td>
+                        <td>@teacher.FullName</td>
+                        <td>@teacher.NID</td>
+                        <td>@teacher.Gender</td>
+                        <td>@teacher.PresentAddress</td>
+                        <td>@teacher.Mobile</td>
+                        <td>@teacher.Email</td>
+                        <td>
+                            @if (!string.IsNullOrEmpty(teacher.Image))
+                            {
+                                <img src="~/uploads/@teacher.Image" alt="Teacher Image" />
+                            }
+                            else
+                            {
+                                <span>No Image</span>
+                            }
+                        </td>
+                        <td>@teacher.Faculty</td>
+                        <td>@teacher.Department</td>
+                        <td>@teacher.Designation</td>
+                        <td>@teacher.JoiningDate.ToString("yyyy-MM-dd")</td>
+                        <td>@teacher.Qualification</td>
+                        <td>@teacher.Experience</td>
+                        <td>
+                            <a href="/Teachers/EditData?id=@teacher.ID">Edit</a> |
+                            <a href="/Teachers/DeleteData?id=@teacher.ID" 
+                               onclick="return confirm('Are you sure you want to delete this teacher?');">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <br />
+        <div style="text-align: center;">
+            <a href="/">Add New Teacher</a>
+        </div>
+    }
+    else
+    {
+        <p align="center">No results to show :(</p>
+        <div style="text-align: center;">
+            <a href="/">Add New Teacher</a>
+        </div>
+    }
+</body>
+</html>

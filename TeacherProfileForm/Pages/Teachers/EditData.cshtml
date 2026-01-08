@@ -1,0 +1,144 @@
+@page
+@model TeacherProfileForm.Pages.Teachers.EditDataModel
+@{
+    ViewData["Title"] = "Edit Teacher";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .error-message {
+            color: red;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <h2 align="center"><u>Edit Teacher Data</u></h2>
+
+    @if (Model.Teacher != null)
+    {
+        <form method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="Teacher.ID" />
+            <input type="hidden" asp-for="Teacher.Image" />
+
+            <label asp-for="Teacher.FullName">Full Name:</label>
+            <input asp-for="Teacher.FullName" />
+            <span asp-validation-for="Teacher.FullName" class="error-message"></span>
+
+            <label asp-for="Teacher.NID">NID:</label>
+            <input asp-for="Teacher.NID" />
+            <span asp-validation-for="Teacher.NID" class="error-message"></span>
+
+            <label>Gender:</label>
+            <input asp-for="Teacher.Gender" type="radio" value="Male" id="male" /> Male
+            <input asp-for="Teacher.Gender" type="radio" value="Female" id="female" /> Female
+            <span asp-validation-for="Teacher.Gender" class="error-message"></span>
+
+            <label asp-for="Teacher.PresentAddress">Present Address:</label>
+            <textarea asp-for="Teacher.PresentAddress" rows="2"></textarea>
+            <span asp-validation-for="Teacher.PresentAddress" class="error-message"></span>
+
+            <label asp-for="Teacher.Mobile">Mobile:</label>
+            <input asp-for="Teacher.Mobile" />
+            <span asp-validation-for="Teacher.Mobile" class="error-message"></span>
+
+            <label asp-for="Teacher.Email">Email:</label>
+            <input asp-for="Teacher.Email" type="email" />
+            <span asp-validation-for="Teacher.Email" class="error-message"></span>
+
+            <label>Change Image (Optional):</label>
+            <input type="file" name="ImageFile" accept="image/*" />
+            @if (!string.IsNullOrEmpty(Model.Teacher.Image))
+            {
+                <p>Current Image: <img src="~/uploads/@Model.Teacher.Image" style="max-width: 100px;" /></p>
+            }
+
+            <label asp-for="Teacher.Faculty">Faculty:</label>
+            <select asp-for="Teacher.Faculty">
+                <option value="Science&Engg.">Faculty Of Science and Engineering</option>
+                <option value="Arts">Faculty Of Arts</option>
+                <option value="BBA">Faculty Of BBA</option>
+                <option value="SocialScience">Faculty Of Social Science</option>
+            </select>
+
+            <label asp-for="Teacher.Department">Department:</label>
+            <select asp-for="Teacher.Department">
+                <option value="CSE">Department Of CSE</option>
+                <option value="EEE">Department Of EEE</option>
+                <option value="ESE">Department of ESE</option>
+            </select>
+
+            <label asp-for="Teacher.Designation">Designation:</label>
+            <select asp-for="Teacher.Designation">
+                <option value="Professor">Professor</option>
+                <option value="Associate Professor">Associate Professor</option>
+                <option value="Assistant Professor">Assistant Professor</option>
+                <option value="Lecturer">Lecturer</option>
+            </select>
+
+            <label asp-for="Teacher.JoiningDate">Joining Date:</label>
+            <input asp-for="Teacher.JoiningDate" type="date" />
+            <span asp-validation-for="Teacher.JoiningDate" class="error-message"></span>
+
+            <label asp-for="Teacher.Qualification">Qualification:</label>
+            <input asp-for="Teacher.Qualification" />
+            <span asp-validation-for="Teacher.Qualification" class="error-message"></span>
+
+            <label asp-for="Teacher.Experience">Experience:</label>
+            <input asp-for="Teacher.Experience" type="number" min="0" />
+            <span asp-validation-for="Teacher.Experience" class="error-message"></span>
+
+            <button type="submit">Update</button>
+            <a href="/Teachers/ShowData">Cancel</a>
+        </form>
+    }
+    else
+    {
+        <p>Teacher not found.</p>
+        <a href="/Teachers/ShowData">Back to Teacher List</a>
+    }
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+</body>
+</html>
