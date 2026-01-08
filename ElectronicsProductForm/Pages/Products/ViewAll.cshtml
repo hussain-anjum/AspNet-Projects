@@ -1,0 +1,77 @@
+@page
+@model ElectronicsProductForm.Pages.Products.ViewAllModel
+@{
+    ViewData["Title"] = "All Electronics Products";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1 align="center"><u>All Electronics Products</u></h1>
+
+    @if (Model.Products != null && Model.Products.Any())
+    {
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Product Name</th>
+                    <th>Brand</th>
+                    <th>Model Number</th>
+                    <th>Category</th>
+                    <th>Price (USD)</th>
+                    <th>Quantity</th>
+                    <th>Warranty (months)</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var product in Model.Products)
+                {
+                    <tr>
+                        <td>@product.Id</td>
+                        <td>@product.ProductName</td>
+                        <td>@product.Brand</td>
+                        <td>@product.ModelNumber</td>
+                        <td>@product.Category</td>
+                        <td>$@product.Price</td>
+                        <td>@product.Quantity</td>
+                        <td>@product.WarrantyMonths</td>
+                        <td>@product.Description</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p align="center">No products found.</p>
+    }
+
+    <div align="center" style="margin-top: 20px;">
+        <a href="/">Add New Product</a>
+    </div>
+</body>
+</html>
