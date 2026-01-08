@@ -1,0 +1,96 @@
+﻿@page
+@model EmployeeProfileForm.Pages.IndexModel
+@{
+    ViewData["Title"] = "Employee Profile";
+}
+
+<h1 style="text-align: center;">Employee Information Form</h1>
+
+<form method="post">
+    <table style="margin: 0 auto;">
+        <tr>
+            <td><label asp-for="Employee.FullName">Full Name:</label></td>
+            <td>
+                <input asp-for="Employee.FullName" type="text" required />
+                <span asp-validation-for="Employee.FullName" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label asp-for="Employee.Email">Email Address:</label></td>
+            <td>
+                <input asp-for="Employee.Email" type="email" required />
+                <span asp-validation-for="Employee.Email" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label asp-for="Employee.Phone">Phone Number:</label></td>
+            <td>
+                <input asp-for="Employee.Phone" type="tel" placeholder="01XXXXXXXXX" required />
+                <span asp-validation-for="Employee.Phone" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label asp-for="Employee.MaritalStatus">Marital Status:</label></td>
+            <td>
+                <select asp-for="Employee.MaritalStatus">
+                    <option value="single">Single</option>
+                    <option value="married">Married</option>
+                    <option value="divorced">Divorced</option>
+                </select>
+                <span asp-validation-for="Employee.MaritalStatus" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label asp-for="Employee.Position">Job Position:</label></td>
+            <td>
+                <input asp-for="Employee.Position" type="text" required />
+                <span asp-validation-for="Employee.Position" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label asp-for="Employee.Company">Company Name:</label></td>
+            <td>
+                <input asp-for="Employee.Company" type="text" />
+            </td>
+        </tr>
+        <tr>
+            <td><label asp-for="Employee.YearsOfExperience">Years of Experience:</label></td>
+            <td>
+                <input asp-for="Employee.YearsOfExperience" type="number" min="0" max="50" value="0" />
+                <span asp-validation-for="Employee.YearsOfExperience" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label>Skills:</label></td>
+            <td>
+                <input type="checkbox" name="SelectedSkills" value="HTML/CSS" id="skill1" />
+                <label for="skill1">HTML/CSS</label><br />
+                
+                <input type="checkbox" name="SelectedSkills" value="JavaScript" id="skill2" />
+                <label for="skill2">JavaScript</label><br />
+                
+                <input type="checkbox" name="SelectedSkills" value="Python" id="skill3" />
+                <label for="skill3">Python</label><br />
+                
+                <input type="checkbox" name="SelectedSkills" value="PHP" id="skill4" />
+                <label for="skill4">PHP</label><br />
+                
+                <input type="checkbox" name="SelectedSkills" value="React" id="skill5" />
+                <label for="skill5">React</label><br />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align: center;">
+                <br /><input type="submit" value="Submit" />
+            </td>
+        </tr>
+    </table>
+</form>
+
+<p style="text-align: center; margin-top: 20px;">
+    <a href="/Employees">View All Employees</a>
+</p>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

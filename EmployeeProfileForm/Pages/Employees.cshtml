@@ -1,0 +1,60 @@
+@page
+@model EmployeeProfileForm.Pages.EmployeesModel
+@{
+    ViewData["Title"] = "Employee's Data";
+}
+
+<h2 style="text-align: center;"><u>Employee's Information</u></h2>
+
+@if (TempData["Message"] != null)
+{
+    <div style="background-color: #d4edda; color: #155724; padding: 10px; margin: 10px; border: 1px solid #c3e6cb; border-radius: 4px; text-align: center;">
+        @TempData["Message"]
+    </div>
+}
+
+@if (Model.Employees.Any())
+{
+    <div style="overflow-x: auto;">
+        <table style="width: 100%; border: 1px solid black; border-collapse: collapse;">
+            <thead>
+                <tr style="background-color: #f2f2f2;">
+                    <th style="border: 1px solid black; padding: 8px;">ID</th>
+                    <th style="border: 1px solid black; padding: 8px;">Full Name</th>
+                    <th style="border: 1px solid black; padding: 8px;">Email</th>
+                    <th style="border: 1px solid black; padding: 8px;">Phone</th>
+                    <th style="border: 1px solid black; padding: 8px;">Marital Status</th>
+                    <th style="border: 1px solid black; padding: 8px;">Position</th>
+                    <th style="border: 1px solid black; padding: 8px;">Company</th>
+                    <th style="border: 1px solid black; padding: 8px;">Experience (Years)</th>
+                    <th style="border: 1px solid black; padding: 8px;">Skills</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var employee in Model.Employees)
+                {
+                    <tr>
+                        <td style="border: 1px solid black; padding: 8px;">@employee.EmployeeId</td>
+                        <td style="border: 1px solid black; padding: 8px;">@employee.FullName</td>
+                        <td style="border: 1px solid black; padding: 8px;">@employee.Email</td>
+                        <td style="border: 1px solid black; padding: 8px;">@employee.Phone</td>
+                        <td style="border: 1px solid black; padding: 8px;">@employee.MaritalStatus</td>
+                        <td style="border: 1px solid black; padding: 8px;">@employee.Position</td>
+                        <td style="border: 1px solid black; padding: 8px;">@employee.Company</td>
+                        <td style="border: 1px solid black; padding: 8px;">@employee.YearsOfExperience</td>
+                        <td style="border: 1px solid black; padding: 8px;">@employee.Skills</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <h3 style="text-align: center;">No results to show :(</h3>
+}
+
+<br />
+<p style="text-align: center;">
+    <a href="/">Add New Employee</a>
+</p>
