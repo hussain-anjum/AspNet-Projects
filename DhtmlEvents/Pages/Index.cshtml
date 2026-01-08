@@ -1,0 +1,67 @@
+﻿@page
+@model DhtmlEvents.Pages.IndexModel
+@{
+    ViewData["Title"] = "DHTML Events";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            padding: 50px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+            border: 2px solid #333;
+            border-radius: 5px;
+            background-color: white;
+            transition: background-color 0.3s;
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            width: 250px;
+            border: 2px solid #333;
+            border-radius: 5px;
+        }
+        #message {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            min-height: 30px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h2>HTML Events</h2>
+    <p id="message"></p>
+    
+    <button onmouseover="showMessage('Mouse Over!', this)">Hover Over Me</button><br /><br />
+    <button onclick="showMessage('Clicked!', this)">Click Me</button><br /><br />
+    <input
+        type="text"
+        onkeypress="showMessage('Key Pressed!', this)"
+        placeholder="Press any key"
+    /><br /><br />
+
+    <script>
+        function showMessage(action, element) {
+            document.getElementById("message").innerHTML =
+                "I am a CSE student (" + action + ")";
+            if (element.tagName === "BUTTON") {
+                element.style.backgroundColor = "lightblue";
+            }
+        }
+    </script>
+</body>
+</html>
